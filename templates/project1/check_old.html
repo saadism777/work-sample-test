@@ -1,0 +1,74 @@
+<html>
+    <head>
+    <title> All Data </title>
+    </head>
+
+    <body>
+        <table>
+            <thead>
+                <th>Form Name<th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+            </thead>
+            <tbody id="tbody1">
+                
+
+            </tbody>
+        </table>
+        <!--Firebase Libraries-->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script> 
+
+    <script id="MainScript">
+        var firebaseConfig = {
+            apiKey: "AIzaSyBSaNWZH_N9fb-1ExTxET4bqfGGEmbjjhw",
+            authDomain: "work-sample-test.firebaseapp.com",
+            databaseURL: "https://work-sample-test-default-rtdb.firebaseio.com",
+            projectId: "work-sample-test",
+            storageBucket: "work-sample-test.appspot.com",
+            messagingSenderId: "776126785760",
+            appId: "1:776126785760:web:59d986efc982eb7e1c0885",
+            measurementId: "G-Q5SNEE822W"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+    function SelectAllData(){
+        firebase.database().ref('Contact').once('value',
+        function(AllRecords){
+            AllRecords.forEach(
+                function(CurrentRecord){
+                    var fname = CurrentRecord.val().fname;
+                    var name_label = CurrentRecord.val().h_data[0];
+                    var name = CurrentRecord.val().in_value[0];
+                    var len = CurrentRecord.val().length;
+                    AddItemsToTable(fname,name_label,name,length);
+                }
+            );
+        });
+    }
+    window.onload = SelectAllData;
+
+    function AddItemsToTable(fname,name_label,name,length){
+        var stdNo=0;
+        var tbody = document.getElementByID('tbody1');
+        var trow = document.createElement('tr');
+        var td1 = document.createElement('td');
+        var td2 = document.createElement('td');
+        var td3 = document.createElement('td');
+        var td4 = document.createElement('td');
+        var td5 = document.createElement('td');
+        td1.innerHTML = ++stdNo;
+        td2.innerHTML = fname;
+        td3.innerHTML = name_label;
+        td4.innerHTML = name;
+        td5.innerHTML = length;
+        
+        trow.appendChild(td1);trow.appendChild(td2);trow.appendChild(td3);trow.appendChild(td4);trow.appendChild(td4);
+        tbody.appenChild(trow);
+    }
+    </body>
+
+</html>
