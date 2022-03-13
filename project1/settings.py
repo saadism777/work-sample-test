@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-3u(oi8n2-e8hfc-65kc5gi7j*ex$mm9ipz(s$j^n=+g3&94(m%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','formviewapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','formviewapp.herokuapp.com/']
 
 
 # Application definition
